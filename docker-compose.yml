@@ -2,10 +2,12 @@ services:
   app:
     build:
       context: .
-    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+      args:
+        - DEV=true
     volumes:
       - ./app:/app
     ports:
       - 8000:8000
     environment:
       - DJANGO_DEBUG=1
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
